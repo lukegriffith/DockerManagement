@@ -1,0 +1,1 @@
+New-ModuleManifest -Path .\cDockerContainer.psd1 -Guid ([guid]::NewGuid()) -Author "Luke Griffith" -RootModule ".\cDockerContainer.psm1" -ModuleVersion "0.1" -DscResourcesToExport "cDockerContainer"
