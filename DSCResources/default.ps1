@@ -1,1 +1,5 @@
-New-ModuleManifest -Path .\cDockerContainer.psd1 -Guid ([guid]::NewGuid()) -Author "Luke Griffith" -RootModule ".\cDockerContainer.psm1" -ModuleVersion "0.1" -DscResourcesToExport "cDockerContainer"
+Import-Module $PSScriptRoot
+import-module pester
+
+
+Invoke-Pester -OutputFile "C:\testout\$((get-date).ToString("ddMMyyhhmmss")).xml" -OutputFormat NUnitXml
