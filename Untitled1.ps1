@@ -45,3 +45,21 @@ $config.Image = "43723d62f8b3"
 $config.Tty = $true
 
 Run-ContainerImage -Configuration $config -ImageIdOrName "43723d62f8b3"
+
+
+<#
+
+
+https://github.com/Microsoft/Docker-PowerShell/issues/174
+
+PBlogc
+$pb = new-object Docker.DotNet.Models.PortBinding
+$pb.HostPort = "88"
+$hostConfig = new-object Docker.DotNet.Models.HostConfig
+$hostConfig.PortBindings = [System.Collections.Generic.Dictionary[string, System.Collections.Generic.iList[Docker.DotNet.Models.PortBinding]]]::new()
+$hostConfig.PortBindings.Add("80/tcp",[System.Collections.Generic.List[Docker.DotNet.Models.PortBinding]]::new([Docker.DotNet.Models.PortBinding[]]@($pb)))
+$c = New-Container -HostConfiguration $hostConfig microsoft/nanoserver
+(Get-ContainerDetail $c).HostConfig.PortBindings
+
+
+#>
